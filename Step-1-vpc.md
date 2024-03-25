@@ -5,7 +5,7 @@ Create custom VPC with CIDR 10.0.0.0/16 with following components.
 3. 1 private subnet- 10.0.4.0/24.
 4. Create 2 Route Table for public and private subnet.
 5. here we will require 3 NAT GW for communicating with private subnet from three public subnet
-6. Create 2 security group for public and private routing distinctly for inbound nd outbound traffic rule.
+6. Create 2 security group for public and private routing distinctly for inbound and outbound traffic rule.
 
 Follow following steps to create and attach components for ingress and egress for public and private subnet.
 
