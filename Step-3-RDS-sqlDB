@@ -1,0 +1,40 @@
+To create an RDS SQL database service in a private subnet within the custom VPC on AWS, follow these steps:
+
+1. **Go to the RDS Dashboard:**
+   - Open the AWS Management Console and navigate to the RDS dashboard.
+
+2. **Launch RDS Instance:**
+   - Click on "Create database" to launch a new RDS instance.
+
+3. **Choose Engine Options:**
+   - Select the desired database engine (e.g., MySQL, PostgreSQL, etc.) compatible with your application requirements.
+
+4. **Choose Use Case:**
+   - Select the use case that best fits your needs. For WordPress, you might choose "Dev/Test" or "Production."
+
+5. **Specify DB Details:**
+   - Choose the appropriate DB instance class based on your workload requirements.
+   - Specify the allocated storage size for your database.
+   - Set the DB instance identifier, master username, and password for accessing the database.
+
+6. **Configure Advanced Settings:**
+   - Select the VPC where you want to launch the RDS instance.
+   - Choose the subnet group that includes the private subnets where you want to deploy the RDS instance.
+   - Configure the security group to allow inbound traffic from the ECS security group on the database port (e.g., 3306 for MySQL).
+   - Optionally, configure other advanced settings such as backup retention, maintenance window, monitoring, etc.
+
+7. **Configure Database Options:**
+   - Set the database name and port.
+   - Configure other options specific to your chosen database engine, such as parameter groups, encryption, etc.
+
+8. **Add Tags (Optional):**
+   - Add any relevant tags to help organize and identify your resources.
+
+9. **Review and Launch:**
+   - Review the configuration settings to ensure they are accurate.
+   - Click on "Launch DB instance" to deploy the RDS instance.
+
+10. **Wait for Deployment:**
+    - It may take several minutes for the RDS instance to be provisioned and become available.
+
+Once the RDS instance is successfully deployed, it will be running in the private subnet of your custom VPC. You can then configure your WordPress application to connect to this RDS database using the endpoint provided by RDS. Ensure that your ECS cluster's security group allows outbound traffic to the RDS instance's security group on the database port.
