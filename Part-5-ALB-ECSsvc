@@ -1,0 +1,62 @@
+To configure an Application Load Balancer (ALB) service for your ECS cluster, follow these steps:
+
+1. **Create Target Group:**
+   - Go to the EC2 dashboard in the AWS Management Console.
+   - Under Load Balancing, select "Target Groups."
+   - Click on "Create target group" and configure it:
+     - Provide a name for the target group.
+     - Choose the target type as "IP."
+     - Select the protocol and port your ECS services are listening on.
+     - Set health check settings.
+     - Click on "Create target group."
+
+2. **Create ALB:**
+   - Go back to the Load Balancers section.
+   - Click on "Create Load Balancer" and choose "Application Load Balancer."
+   - Configure the ALB:
+     - Specify a name for your ALB.
+     - Select the VPC where your ECS cluster resides.
+     - Choose the appropriate availability zones.
+     - Configure the listener to listen on the desired port (e.g., 80 for HTTP).
+     - Add a listener rule to forward traffic to the target group created earlier.
+     - Optionally, configure security settings, such as SSL certificates.
+     - Add tags if needed.
+   - Click on "Next: Configure Security Settings."
+
+3. **Configure Security Settings:**
+   - Optionally, configure security settings as per your requirements.
+   - Click on "Next: Configure Routing."
+
+4. **Configure Routing:**
+   - Select "Choose a target group" and choose the target group created earlier.
+   - Configure health checks and other settings as needed.
+   - Click on "Next: Register Targets."
+
+5. **Register Targets:**
+   - Register your ECS services with the target group:
+     - Choose the ECS cluster where your services are running.
+     - Select the services you want to register with the target group.
+   - Click on "Next: Review."
+
+6. **Review and Create:**
+   - Review your ALB configuration.
+   - Click on "Create" to create the ALB.
+   - Wait for the ALB to be provisioned.
+
+7. **Update ECS Service:**
+   - Go to the ECS dashboard in the AWS Management Console.
+   - Click on "Clusters" and select your ECS cluster.
+   - Click on the service that you want to associate with the ALB.
+   - Click on "Update" to modify the service.
+   - Under "Load balancer type," select "Application Load Balancer."
+   - Choose the ALB you created earlier from the dropdown menu.
+   - Configure listener settings (e.g., port mappings).
+   - Click on "Next step" once done.
+
+8. **Update Service:**
+   - Review your changes.
+   - Click on "Next step."
+   - Click on "Update Service" to apply the changes.
+   - Wait for the service to be updated.
+
+Once the ALB service is configured and associated with your ECS cluster, it will distribute incoming traffic to your ECS services based on the configured listener rules. Test your application to ensure that it's accessible via the ALB endpoint.
